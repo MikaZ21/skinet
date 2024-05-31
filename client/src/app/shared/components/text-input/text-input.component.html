@@ -9,4 +9,6 @@
     <label for="floatingInput">{{label}}</label>
     <div *ngIf="control.errors?.['required']" class="invalid-feedback">Please enter your {{label}}</div>
     <div *ngIf="control.errors?.['email']" class="invalid-feedback">Invalid email address</div>
+    <div *ngIf="control.errors?.['pattern']" class="invalid-feedback">
+        It needs at least 1 lowercase letter, 1 Capital letter, 1 digit, 1 special character and the length should be between 6-10 characters.</div>
 </div>

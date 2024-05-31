@@ -37,7 +37,7 @@ export class AccountService {
     )
   }
 
-  retister(values: any) {
+  register(values: any) {
     return this.http.post<User>(this.baseUrl + 'account/register', values).pipe(
       map(user => {
         localStorage.setItem('token', user.token);
