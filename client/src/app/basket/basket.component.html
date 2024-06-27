@@ -10,7 +10,7 @@
                     <table class="table">
                         <thead class="bg-light text-uppercase">
                             <tr>
-                                <th><div class="py-2">Product</div></th>
+                                <th><div class="py-2 ps-4">Product</div></th>
                                 <th><div class="py-2">Price</div></th>
                                 <th><div class="py-2">Quantity</div></th>
                                 <th><div class="py-2">Total</div></th>
@@ -23,7 +23,7 @@
                                     <div class="p-2 d-inline-block">
                                         <img src="{{item.pictureUrl}}"
                                             alt="{{item.productName}}"
-                                            class="img-fluid"
+                                            class="img-fluid ps-3"
                                             style="max-height: 50px;"
                                         >
                                         <div class="ms-3 d-inline-block align-middle">
@@ -73,16 +73,15 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row pb-5">
                 <div class="col-6 offset-6">
                     <app-order-totals></app-order-totals>
                     <div class="d-grid">
-                        <a routerLink="/checkout" class="btn btn-outline-primary py-2">
+                        <a routerLink="/checkout" class="btn btn-outline-primary py-3">
                             Proceed to checkout
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </ng-container>
