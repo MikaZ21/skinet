@@ -25,23 +25,23 @@
         <ng-container *ngIf="accountService.currentUser$ | async as user">
           <div class="dropdown ms-3 me-5" style="cursor: pointer;" dropdown>
             <a dropdownToggle class="dropdown-toggle">
-              <strong>Welcome {{user.displayName}}</strong>
+              <strong>Welcome {{user.displayName}} !</strong>
             </a>
             <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
-              <li class="py-1">
+              <li class="py-2">
                 <a routerLink="/basket" class="dropdown-item">
-                  <i class="fa fa-shopping-cart me-3">View basket</i>
+                  <i class="fa fa-shopping-cart" style="margin-right: 0.5rem;">&nbsp;&nbsp;View Basket</i>
                 </a>
               </li>
               <li class="py-1">
                 <a routerLink="/orders" class="dropdown-item">
-                  <i class="fa fa-history me-3">View orders</i>
+                  <i class="fa fa-history me-3">&nbsp;&nbsp;View Orders</i>
                 </a>
               </li>
               <div class="dropdown-divider"></div>
               <li class="py-1">
                 <a (click)="accountService.logout()" class="dropdown-item">
-                  <i class="fa fa-sign-out me-3">Logout</i>
+                  <i class="fa fa-sign-out me-1 mb-2">&nbsp;&nbsp;Logout</i>
                 </a>
               </li>
             </ul>
