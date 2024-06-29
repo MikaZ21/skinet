@@ -1,7 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Core.Entities.OrderAggregate;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Core.Entities;
 
 namespace Infrastructure.Data.Config
 {
@@ -13,7 +13,8 @@ namespace Infrastructure.Data.Config
             {
                 a.WithOwner();
             });
-            builder.Property(s => w.Status)
+            builder.Navigation(a => a.ShipToAddress).IsRequired();
+            builder.Property(s => s.Status)
                 .HasConversion(
                     o => o.ToString(),
                     o => (OrderStatus) Enum.Parse(typeof(OrderStatus), o)
