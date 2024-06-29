@@ -24,6 +24,7 @@ namespace API.Extensions
                     return ConnectionMultiplexer.Connect(options);
                 });
                 
+                services.AddScoped<IOrderService, OrderService>();
                 services.AddScoped<IBasketRepository, BasketRepository>();
                 services.AddScoped<IProductRepository, ProductRepository>();
                 services.AddScoped<ITokenService, TokenService>();
