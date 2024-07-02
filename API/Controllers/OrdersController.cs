@@ -4,7 +4,6 @@ using API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Core.Interfaces;
 using AutoMapper;
-using System.Security.Claims;
 using API.Extensions;
 using API.Errors;
 

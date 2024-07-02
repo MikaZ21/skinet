@@ -1,22 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Core.Entities;
 using Core.Entities.OrderAggregate;
 using Core.Interfaces;
-using Core.Entities;
 
 namespace Infrastructure.Services
 {
     public class OrderService : IOrderService
     {
         private readonly IGenericRepository<Order> _orderRepo;
-        private readonly IGenericRepository<product> _productRepo;
+        private readonly IGenericRepository<Product> _productRepo;
         private readonly IBasketRepository _basketRepo;
         private readonly IGenericRepository<DeliveryMethod> _dmRepo;
 
         public OrderService(IGenericRepository<Order> orderRepo, IGenericRepository<DeliveryMethod> dmRepo, 
-        IGenericRepository<product> productRepo, IBasketRepository basketRepo)
+        IGenericRepository<Product> productRepo, IBasketRepository basketRepo)
         {
             _orderRepo = orderRepo;
             _productRepo = productRepo;
@@ -25,7 +21,7 @@ namespace Infrastructure.Services
         }
 
 
-        public Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethod, string basketId,
+        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId,
         Address shippingAddress)
         {
             // get basket from the repo
@@ -56,19 +52,19 @@ namespace Infrastructure.Services
             return order;
         }
 
-        public Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync()
+        public async Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync()
         {
-            
+            return await _dmRepo.ListAllAsync();
         }
 
-        public Task<Order> GetOrderByIdAsync(int id, string buyerEmail)
+        public async Task<Order> GetOrderByIdAsync(int id, string buyerEmail)
         {
-            
+            return await _orderRepo.GetByIdAsync(id);
         }
 
-        public Task<IReadOnlyList<Order>> GetOrderForUserAsync(string buyerEmail)
+        public async Task<IReadOnlyList<Order>> GetOrderForUserAsync(string buyerEmail)
         {
-            
+            return await _orderRepo.ListAllAsync();
         }
     }
 }
