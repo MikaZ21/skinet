@@ -27,7 +27,16 @@ a {
     background-color: rgba(210, 0, 111, 1);
 }
 
+.dropdown-item {
+    color: white;
+
+    i {
+     margin-right: 0.5rem;
+    }
+}
+
 .dropdown-item:focus,
 .dropdown-item:hover {
     background-color: transparent;
+    color: black;
 }
