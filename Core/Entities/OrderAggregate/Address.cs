@@ -14,7 +14,7 @@ namespace Core.Entities.OrderAggregate
             Street = street;
             City = city;
             State = state;
-            ZipCode = zipcode;
+            Zipcode = zipcode;
         }
 
         public string FirstName { get; set; }
@@ -22,7 +22,7 @@ namespace Core.Entities.OrderAggregate
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string ZipCode { get; set; }
+        public string Zipcode { get; set; }
 
     }
 }

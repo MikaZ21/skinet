@@ -185,7 +185,7 @@ namespace Infrastructure.Data.Migrations
                             b1.Property<string>("Street")
                                 .HasColumnType("TEXT");
 
-                            b1.Property<string>("ZipCode")
+                            b1.Property<string>("Zipcode")
                                 .HasColumnType("TEXT");
 
                             b1.HasKey("OrderId");
