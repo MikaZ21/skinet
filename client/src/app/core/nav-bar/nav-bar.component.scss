@@ -15,7 +15,7 @@ a {
     color: #343a40;
 
     &.active {
-        color: rgb(5, 148, 191);
+        color: rgb(0 170 221);
     }
 }
 
@@ -31,12 +31,12 @@ a {
     color: white;
 
     i {
-     margin-right: 0.5rem;
+     margin-right: 0.7rem;
     }
 }
 
 .dropdown-item:focus,
 .dropdown-item:hover {
     background-color: transparent;
-    color: black;
+    color: #007da7;
 }
