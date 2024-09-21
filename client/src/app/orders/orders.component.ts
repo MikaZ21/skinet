@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Order } from '../shared/models/order';
 import { OrdersService } from './orders.service';
 
@@ -7,7 +7,7 @@ import { OrdersService } from './orders.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss']
 })
-export class OrdersComponent {
+export class OrdersComponent implements OnInit {
   orders: Order[] = [];
 
   constructor(private orderService: OrdersService) {}

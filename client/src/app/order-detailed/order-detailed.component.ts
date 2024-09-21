@@ -16,7 +16,9 @@ export class OrderDetailedComponent implements OnInit {
     private orderService: OrdersService,
     private route: ActivatedRoute,
     private bcService: BreadcrumbService
-  ){}
+  ){
+    // this.bcService.set('@OrderDetailed', ' ');
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
