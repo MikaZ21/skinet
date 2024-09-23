@@ -2,10 +2,8 @@ using Core.Entities;
 
 namespace Core.Interfaces
 {
-    public class IPaymentService
+    public interface IPaymentService
     {
-        Task<CustomerBasket> CreateOrUpdatePaymentIntent(string basketId) {
-            
-        }
+        Task<CustomerBasket> CreateOrUpdatePaymentIntent(string basketId);
     }
 }
