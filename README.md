@@ -9,7 +9,7 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
   - [Screenshot](#screenshot)
   - [What I learned](#what-i-learned)
 - [Features](#features)
-  - [Login and Sign-Up](#login-and-signup)
+  - [Login and Sign-Up](#login-and-sign-up)
   - [Sort & Search](#sort-search)
   - [Paging](#paging)
   - [Shopping Cart](#shopping-cart)
