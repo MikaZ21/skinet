@@ -10,11 +10,11 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
   - [What I learned](#what-i-learned)
 - [Features](#features)
   - [Login and Sign-Up](#login-and-sign-up)
-  - [Sort & Search](#sort-search)
+  - [Sort and Search](#sort-and-search)
   - [Paging](#paging)
   - [Shopping Cart](#shopping-cart)
   - [Order Summary](#order-summary)
-  - [Proceed to Checkout](#checkout)
+  - [Proceed to Checkout](#proceed-to-checkout)
   - [Confirm Order](#confirm-order)
   - [View Order](#view-order)
 
@@ -61,7 +61,7 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ---
 
-## 🔹 Sort & Search:
+### Sort & Search
 
 * 機能: 製品を名前や価格順にソートし、キーワードを使用して商品を検索できる。
 * UI: スライドダウンメニューと検索ボックスで操作をサポート。
@@ -74,7 +74,8 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ---
 
-## 🔹 Paging:
+### Paging
+
 * 機能: 製品リストはページングに対応しており、1ページに表示する製品数を管理。
 * 実装: サーバーからのデータ取得に基づく動的なページネーション。
 
@@ -85,7 +86,8 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 </div>
 
 ---
-## 🔹 Shopping Cart:
+### Shopping Cart
+
 * 機能: 製品をカートに追加し、数量を調整することが可能。
 * UI: カート内の製品はリアルタイムで更新され、製品の削除も可能。
 
@@ -97,7 +99,8 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ---
 
-## 🔹 Order Summary:
+### Order Summary
+
 * 機能: 注文の合計金額や送料を確認できるオーダーサマリーを表示。
 * UI: カート内の製品に基づくリアルタイムの料金更新。
 
@@ -109,7 +112,7 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ---
 
-## 🔹 Proceed to Checkout:
+### Proceed to Checkout
 * 機能: ユーザーは、チェックアウト手続きを進め、支払い情報を入力できる。
 
 <div align="center">
@@ -120,7 +123,7 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ---
 
-## 🔹 Confirm Order:
+### Confirm Order
 * 機能: 注文確定後、確認メッセージが表示され、注文の詳細が確認できる。
 
 <div align="center">
@@ -131,7 +134,7 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ---
 
-## 🔹 View Order:
+### View Order
 * 機能: 注文履歴から過去の注文内容を確認できる。
 
 <div align="center">
@@ -142,5 +145,4 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ---
 
-## ✨ <img width="564" alt="Version-Skinet" src="https://github.com/MikaZ21/skinet/assets/93892096/99c60e81-8345-41c0-abf0-448e9579c9a0">
- 💻✨
+✨ <img width="564" alt="Version-Skinet" src="https://github.com/MikaZ21/skinet/assets/93892096/99c60e81-8345-41c0-abf0-448e9579c9a0">💻✨
