@@ -42,19 +42,22 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 ### What I learned
 
 📍 Angular Framework:
-    Angularを使ってモジュール設計やコンポーネントベースの開発を深く理解しました。<br>
+    Gained a deep understanding of component-based development using Angular.<br>
 📍 API Integration:
-    サーバーとのデータ通信を実装し、動的に製品リストを更新しました。<br>
+    Implemented data communication with the server to dynamically update product listings.<br>
 📍 Cart Management:
-    カート内製品の管理や数量調整機能を実装しました。<br>
+    Developed functionality for managing products in the cart and adjusting quantities.<br>
 📍 UI/UX Enhancements:
-    ユーザーが操作しやすいインターフェースデザインに取り組み、UX向上に注力しました。<br>
+    Focused on designing a user-friendly interface and improving the overall user experience.<br>
 
 ---
 
 ## Features
 
 ### Login and Sign-Up
+
+* Functionality: Users can log in or sign up using their email address and password.
+* Validation: Appropriate error messages are displayed when users input invalid information.
 
 * 機能: ユーザーがメールアドレスとパスワードを使ってログインやサインアップを行うことができる。
 * バリデーション: ユーザーが無効な情報を入力した場合、適切なエラーメッセージが表示される。
@@ -69,18 +72,24 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ### Sort and Search
 
+* Functionality: Users can sort products by name or price and search for items using keywords.
+* UI: Supports interactions through a drop-down menu and search box.
+
 * 機能: 製品を名前や価格順にソートし、キーワードを使用して商品を検索できる。
 * UI: スライドダウンメニューと検索ボックスで操作をサポート。
 
 <div align="center">
-  <img alt="Sort & Search" src="https://github.com/user-attachments/assets/410d96f4-9b3f-409e-a704-0554e1e8ec6c" width="75%">
+  <img alt="Sort and Search" src="https://github.com/user-attachments/assets/410d96f4-9b3f-409e-a704-0554e1e8ec6c" width="75%">
   <br>
-  <em>Sort & Search</em>
+  <em>Sort and Search</em>
 </div>
 
 ---
 
 ### Paging
+
+* Functionality: The product list supports pagination, allowing control over the number of products displayed per page.
+* Implementation: Dynamic pagination based on data retrieval from the server.
 
 * 機能: 製品リストはページングに対応しており、1ページに表示する製品数を管理。
 * 実装: サーバーからのデータ取得に基づく動的なページネーション。
@@ -93,6 +102,9 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ---
 ### Shopping Cart
+
+* Functionality: Users can add products to the cart and adjust quantities.
+* UI: The products in the cart are updated in real-time, and items can also be removed.
 
 * 機能: 製品をカートに追加し、数量を調整することが可能。
 * UI: カート内の製品はリアルタイムで更新され、製品の削除も可能。
@@ -107,6 +119,9 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 
 ### Order Summary
 
+* Functionality: Displays an order summary where users can view the total amount and shipping costs.
+* UI: Real-time price updates based on the products in the cart.
+
 * 機能: 注文の合計金額や送料を確認できるオーダーサマリーを表示。
 * UI: カート内の製品に基づくリアルタイムの料金更新。
 
@@ -119,6 +134,9 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 ---
 
 ### Proceed to Checkout
+
+* Functionality: Users can proceed with the checkout process and enter payment information.
+
 * 機能: ユーザーは、チェックアウト手続きを進め、支払い情報を入力できる。
 
 <div align="center">
@@ -130,6 +148,9 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 ---
 
 ### Confirm Order
+
+* Functionality: After placing an order, a confirmation message is displayed, and users can view the order details.
+
 * 機能: 注文確定後、確認メッセージが表示され、注文の詳細が確認できる。
 
 <div align="center">
@@ -141,6 +162,9 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 ---
 
 ### View Order
+
+* Functionality: Users can view past orders from their order history.
+
 * 機能: 注文履歴から過去の注文内容を確認できる。
 
 <div align="center">
