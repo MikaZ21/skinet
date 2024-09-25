@@ -1,6 +1,11 @@
 ## 🏔️ Skinet-Core: Snow Sports Gear E-Commerce Website
-Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラインショッピングプラットフォームです。<br>
-機能としては、製品のブラウジング、カートへの追加、注文履歴の確認などが可能です。使いやすいインターフェースと直感的な操作を目指し、.NETとAngularを使用して開発されています。
+
+Skinet-Core is an online shopping website where users can purchase snow gear. <br>
+Features include browsing products, adding items to the cart, making payments, and checking order history. <br>
+The goal was to create an easy-to-use interface with intuitive operation. The website is developed using .NET and Angular.
+
+Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラインショッピングウェブサイトです。<br>
+機能としては、製品のブラウジング、カートへの追加、支払い、注文履歴の確認などが可能です。使いやすいインターフェースと直感的な操作を目指しました。.NETとAngularを使用して開発されています。
 
 ### Table of contents
 
