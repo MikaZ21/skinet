@@ -7,8 +7,6 @@ The goal was to create an easy-to-use interface with intuitive operation. The we
 Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラインショッピングウェブサイトです。<br>
 機能としては、製品のブラウジング、カートへの追加、支払い、注文履歴の確認などが可能です。使いやすいインターフェースと直感的な操作を目指しました。.NETとAngularを使用して開発されています。
 
-### Screenshot
-
 <div align="center">
   <img alt="Skinet-Core" src="https://github.com/user-attachments/assets/c87b74bc-a778-4b0c-a51e-e282dd97f4ee">
   <br>
@@ -37,9 +35,9 @@ Skinet-Coreは、ユーザーがスノーギアを購入するためのオンラ
 ## Overview
 
 ### The challenge
-* ユーザーにシンプルかつ直感的なインターフェースを提供すること。
-* 製品のサーチ、ソート、ページング機能を通じて、スムーズな購買体験を実現。
-* カート内での数量調整や、注文履歴の確認機能を実装。
+* Provide users with a simple and intuitive interface.
+* Ensure a smooth shopping experience through product search, sorting, and pagination features.
+* Implement functionality for adjusting quantities in the cart and viewing order history.
 
 ### What I learned
 
