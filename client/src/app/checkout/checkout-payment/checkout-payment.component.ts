@@ -77,6 +77,8 @@ export class CheckoutPaymentComponent implements OnInit{
             this.basketService.deleteLocalBasket();
             const navigationExtras: NavigationExtras = {state: order};
             this.router.navigate(['checkout/success'], navigationExtras);    
+          } else {
+            this.toastr.error(result.error.message);
           }
         })
       }
