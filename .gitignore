@@ -484,3 +484,5 @@ API/identity.db-wal
 ssl/
 ssl/*.pem
 ssl/*.key
+
+docker-compose.yml
