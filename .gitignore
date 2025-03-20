@@ -480,3 +480,7 @@ API/skinet.db-shm
 API/skinet.db-wal
 API/identity.db-shm
 API/identity.db-wal
+
+ssl/
+ssl/*.pem
+ssl/*.key
