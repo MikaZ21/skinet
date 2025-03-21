@@ -17,7 +17,7 @@ export class OrderDetailedComponent implements OnInit {
     private route: ActivatedRoute,
     private bcService: BreadcrumbService
   ){
-    // this.bcService.set('@OrderDetailed', ' ');
+    this.bcService.set('@OrderDetailed', ' ');
   }
 
   ngOnInit(): void {

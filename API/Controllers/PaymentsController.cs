@@ -3,13 +3,14 @@ using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Stripe;
 
 namespace API.Controllers
 {
     public class PaymentsController : BaseApiController
     {
-        private const string WhSecret = "";
+        private const string WhSecret = "whsec_5702c35b9094b04cb5b42ffbdf7915c53ba555e41ea7f5690bfd82d81a980059";
         private readonly IPaymentService _paymentService;
 
         private readonly ILogger<PaymentsController> _logger;
@@ -31,12 +32,13 @@ namespace API.Controllers
             return basket;
         }
 
-        [HttpPost]
+        [HttpPost("webhook")]
         public async Task<ActionResult> StripeWebhook()
         {
             var json = await new StreamReader(Request.Body).ReadToEndAsync();
 
             var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], WhSecret);
+            // var stripeEvent = JsonConvert.DeserializeObject<Event>(json);
 
             PaymentIntent intent;
             Core.Entities.OrderAggregate.Order order;
