@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20250416194958_AddBasketIdToOrder")]
+    partial class AddBasketIdToOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
@@ -46,9 +49,6 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("BasketId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("BuyerEmail")
                         .HasColumnType("TEXT");
 
@@ -67,6 +67,9 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<double>("Subtotal")
                         .HasColumnType("REAL");
+
+                    b.Property<string>("basketId")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -106,7 +109,7 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Price")
@@ -243,11 +246,10 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.OrderAggregate.OrderItem", b =>
                 {
-                    b.HasOne("Core.Entities.OrderAggregate.Order", "Order")
+                    b.HasOne("Core.Entities.OrderAggregate.Order", null)
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.OwnsOne("Core.Entities.OrderAggregate.ProductItemOrdered", "ItemOrdered", b1 =>
                         {
@@ -272,8 +274,6 @@ namespace Infrastructure.Data.Migrations
                         });
 
                     b.Navigation("ItemOrdered");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>

@@ -12,11 +12,15 @@ namespace API.Controllers
     {
         private const string WhSecret = "whsec_5702c35b9094b04cb5b42ffbdf7915c53ba555e41ea7f5690bfd82d81a980059";
         private readonly IPaymentService _paymentService;
-
+        private readonly IOrderService   _orderService;
         private readonly ILogger<PaymentsController> _logger;
-        public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger)
+        public PaymentsController(
+            IPaymentService paymentService, 
+            IOrderService orderService,
+            ILogger<PaymentsController> logger)
         {
             _paymentService = paymentService;
+            _orderService   = orderService;
             _logger = logger;
         }
 
@@ -40,26 +44,44 @@ namespace API.Controllers
             var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], WhSecret, throwOnApiVersionMismatch: false);
             // var stripeEvent = JsonConvert.DeserializeObject<Event>(json);
 
-            PaymentIntent intent;
-            Core.Entities.OrderAggregate.Order order;
-
-
             switch (stripeEvent.Type)
             {
                 case "payment_intent.succeeded":
-                    intent = (PaymentIntent)stripeEvent.Data.Object;
-                    _logger.LogInformation("Payment succeeded: ", intent.Id);
-                    order = await _paymentService.UpdateOrderPaymentSucceeded(intent.Id);
-                    _logger.LogInformation("Order updated to payment received: ", order.Id);
-                    break;
-                case "payment_intent.payment_failed":
-                    intent = (PaymentIntent)stripeEvent.Data.Object;
-                    _logger.LogInformation("Payment failed: ", intent.Id);
-                    order = await _paymentService.UpdateOrderPaymentFailed(intent.Id);
-                    _logger.LogInformation("Order updated to payment failed: ", order.Id);
-                    break;
-            }
+                {
+                    var intent = (PaymentIntent)stripeEvent.Data.Object;
+                    _logger.LogInformation("Payment succeeded: {IntentId}", intent.Id);
 
+                    var order = await _paymentService.UpdateOrderPaymentSucceeded(intent.Id);
+
+                    if (order == null)
+                    {
+                         _logger.LogWarning("No order found for PaymentIntentId {IntentId}", order.Id);
+                    }
+                    await _orderService.CreateOrderAsync(
+                        order.BuyerEmail,
+                        order.DeliveryMethod.Id,
+                        order.BasketId,
+                        order.ShipToAddress);
+
+                    _logger.LogInformation("Order {OrderId} updated to PaymentReceived: ", order.Id);
+                    break;
+                }
+               case "payment_intent.payment_failed":
+                {
+                    var intent = (PaymentIntent)stripeEvent.Data.Object;
+                    _logger.LogInformation("Payment failed: {IntentId}", intent.Id);
+
+                    var order = await _paymentService.UpdateOrderPaymentFailed(intent.Id);
+                    if (order == null)
+                    {
+                        _logger.LogWarning("No order found for failed PaymentIntentId {IntentId}", intent.Id);
+                        break;
+                    }
+
+                    _logger.LogInformation("Order {OrderId} updated to PaymentFailed", order.Id);
+                    break;
+                }
+            }
             return new EmptyResult();
         }
     }

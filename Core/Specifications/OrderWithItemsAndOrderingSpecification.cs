@@ -8,6 +8,7 @@ namespace Core.Specifications
         {
             AddInclude(o => o.OrderItems);
             AddInclude(o => o.DeliveryMethod);
+            AddInclude(o => o.OrderEvents);
             AddOrderByDescending(o => o.OrderDate);
         }
 

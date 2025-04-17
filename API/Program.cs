@@ -1,21 +1,33 @@
 using API.Extensions;
 using API.Middleware;
 using Core.Entities.Identity;
+using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Identity;
 using Infrastructure.Identity.Migrations;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ─── ここでデータソースをログに出す ───
+var tempOpt = new DbContextOptionsBuilder<StoreContext>()
+    .UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
+    .Options;
+using (var tmp = new StoreContext(tempOpt))
+{
+    Console.WriteLine($"▶▶▶ EF is opening DB at: {Path.GetFullPath(tmp.Database.GetDbConnection().DataSource)}");
+}
 // Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddWsaggerDocumentation();
+
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 var app = builder.Build();
 

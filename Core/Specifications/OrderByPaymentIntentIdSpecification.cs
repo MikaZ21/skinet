@@ -9,6 +9,10 @@ namespace Core.Specifications
         public OrderByPaymentIntentIdSpecification(string paymentIntentId)
              : base(o => o.PaymentIntentId == paymentIntentId)
         {
+             AddInclude(o => o.OrderItems);
+            AddInclude(o => o.DeliveryMethod);
+            AddInclude(o => o.ShipToAddress);
+            AddInclude(o => o.OrderEvents);
         }
     }
 }

@@ -6,6 +6,8 @@ using Core.Interfaces;
 using AutoMapper;
 using API.Extensions;
 using API.Errors;
+using Microsoft.EntityFrameworkCore;   // Include を使うため
+using Infrastructure.Data;             // StoreContext がある場所
 
 namespace API.Controllers
 {
@@ -14,11 +16,14 @@ namespace API.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly IMapper _mapper;
+        private readonly StoreContext  _ctx;
 
-        public OrdersController(IOrderService orderService, IMapper mapper)
+
+        public OrdersController(IOrderService orderService, IMapper mapper, StoreContext ctx)
         {
             _mapper = mapper;
             _orderService = orderService;
+            _ctx          = ctx;
         }
 
         [HttpPost]
@@ -45,6 +50,28 @@ namespace API.Controllers
             return Ok(_mapper.Map<IReadOnlyList<OrderToReturnDto>>(orders));
         }
 
+  // 生の OrderItems レコードを返すデバッグ用エンドポイント
+        [HttpGet("raw-items/{orderId}")]
+        public async Task<ActionResult> GetRawOrderItems(int orderId)
+        {
+            // 1) DBから直接OrderItemsを取ってくる
+            var items = await _ctx.OrderItems
+                                  .Where(oi => oi.OrderId == orderId)
+                                  .ToListAsync();
+
+            // 2) 件数と中身を返却 (JSON)
+            return Ok(new {
+                Count = items.Count,
+                Items = items.Select(i => new {
+                    i.Id,
+                    i.OrderId,
+                    i.Price,
+                    i.Quantity,
+                    ProductId = i.ItemOrdered.ProductItemId
+                })
+            });
+        }
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<OrderToReturnDto>> GetOrderByIdForUser(int id)
         {

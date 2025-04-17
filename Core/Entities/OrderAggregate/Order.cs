@@ -13,16 +13,29 @@ namespace Core.Entities.OrderAggregate
             BuyerEmail = buyerEmail;
             ShipToAddress = shipToAddress;
             DeliveryMethod = deliveryMethod;
-            OrderItems = orderItems;
+            // OrderItems = orderItems;
+            _orderItems = new List<OrderItem>(orderItems);
             Subtotal = subtotal;
             PaymentIntentId = paymentIntentId;
         }
 
+        private readonly List<OrderEvent> _orderEvents = new List<OrderEvent>();
+        public IReadOnlyList<OrderEvent> OrderEvents => _orderEvents.AsReadOnly();
+        public void AddOrderEvent(OrderEvent orderEvent)
+        {
+            _orderEvents.Add(orderEvent);
+        }
+        public void UpdateOrderItems(IEnumerable<OrderItem> newItems)
+        {
+            _orderItems.Clear();
+            _orderItems.AddRange(newItems);
+        }
         public string BuyerEmail { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public Address ShipToAddress { get; set; }
         public DeliveryMethod DeliveryMethod { get; set; }
-        public IReadOnlyList<OrderItem> OrderItems { get; set; }
+        public IReadOnlyList<OrderItem> OrderItems => _orderItems.AsReadOnly();
+        private readonly List<OrderItem> _orderItems;
         public decimal Subtotal { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public string PaymentIntentId { get; set; }
@@ -30,5 +43,6 @@ namespace Core.Entities.OrderAggregate
         {
             return Subtotal + DeliveryMethod.Price;
         }
+        public string BasketId { get; set; }
     }
 }
